@@ -7,8 +7,6 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.3'
 gem 'jwt'
 gem 'rack-cors'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -33,6 +31,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry', '~> 0.12.2'
 end
