@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  belongs_to :field 
+  has_many :field 
 end

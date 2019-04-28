@@ -8,6 +8,8 @@ gem 'rails', '~> 5.2.3'
 gem 'jwt'
 gem 'rack-cors'
 gem 'pg'
+gem 'config'
+gem "http"
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'active_model_serializers'

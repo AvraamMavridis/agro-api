@@ -3,20 +3,33 @@ class AuthenticationController < ApplicationController
 
   # POST /auth/login
   def login
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(user_params[:email])
 
     if @user.present?
-      token = JsonWebToken.encode(user_id: @user.id)
-      time = Time.now + 24.hours.to_i
-      render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M") }, status: :ok
+      @token = JsonWebToken.encode(user_id: @user.id)
+      @time = Time.now + 24.hours.to_i
+      User.update({ image: user_params[:image] })
+      render_ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      begin
+        user = User.new(user_params)
+        user.save
+        @token = JsonWebToken.encode(user_id: user.id)
+        @time = Time.now + 24.hours.to_i
+        render_ok
+      rescue => e
+        head 500
+      end
     end
   end
 
   private
 
-  def login_params
-    params.permit(:email)
+  def render_ok
+    render json: { token: @token, exp: @time.strftime("%m-%d-%Y %H:%M") }, status: :ok
+  end
+
+  def user_params
+    params.require(:authentication).permit(:email, :name, :image)
   end
 end
