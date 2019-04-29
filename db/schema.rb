@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_125821) do
+ActiveRecord::Schema.define(version: 2019_04_29_093523) do
 
   create_table "fields", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2019_04_26_125821) do
     t.integer "user_id"
     t.integer "plant_type_id"
     t.json "coordinates"
+    t.string "area", limit: 100
+    t.text "description", limit: 400
+    t.string "image", limit: 150
     t.index ["plant_type_id"], name: "index_fields_on_plant_type_id"
     t.index ["user_id"], name: "index_fields_on_user_id"
   end

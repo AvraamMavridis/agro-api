@@ -10,9 +10,6 @@ class FieldController < ApplicationController
   end
 
   def create
-    
-    binding.pry
-    
     field = Field.create(field_params)
     render json: field, status: :created if field.valid?
     render_forbidden(field.errors) unless field.valid?
@@ -25,7 +22,7 @@ class FieldController < ApplicationController
   end
 
   def plant_type_id
-    PlantType.find_by_name(params[:plant_type]).id
+    PlantType.find_by_name(params[:plant_type][:label]).id
   end
 
   def field_params
