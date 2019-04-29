@@ -1,11 +1,11 @@
-plant_types = PlantType.create([
+plant_types = [
   {
     id: 1,
     name: 'Sweet Potato',
     category: 'Roots',
   },
   {
-    id: 3,
+    id: 2,
     name: 'Beet',
     category: 'Roots',
   },
@@ -44,4 +44,14 @@ plant_types = PlantType.create([
     name: 'Turnip',
     category: 'Roots',
   },
-])
+]
+
+plant_types.each do |plant_type|
+  begin
+    plant = PlantType.new(plant_type)
+    puts "Add plant #{plant_type[:name]}, valid: #{plant.valid?}"
+    plant.save
+  rescue => e
+    puts e
+  end
+end
