@@ -7,10 +7,12 @@ class FieldController < ApplicationController
   end
   
   def show
+    field = Field.where(id: show_params[:id]).first
+    render json: field
   end
 
   def create
-    field = Field.create(field_params)
+    field = Field.create(create_params)
     render json: field, status: :created if field.valid?
     render_forbidden(field.errors) unless field.valid?
   end
@@ -25,13 +27,22 @@ class FieldController < ApplicationController
     PlantType.find_by_name(params[:plant_type][:label]).id
   end
 
-  def field_params
-    field = params.permit!
+  def create_params
+    permitted = params.permit!
     {
-      name: field["name"],
-      coordinates: field["coordinates"],
+      name: permitted["name"],
+      coordinates: permitted["coordinates"],
+      area: permitted["area"],
+      description: permitted["description"],
       plant_type_id: plant_type_id,
       user_id: user_id,
+    }
+  end
+
+  def show_params
+    permitted = params.permit!
+    {
+      id: permitted["id"]
     }
   end
 end

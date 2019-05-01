@@ -6,11 +6,13 @@ namespace :weather do
       if field.coordinates.present?
         begin
           point = field.coordinates[0]
-          long, lat = point
+          
+          long = point["lng"]
+          lat = point["lat"]
 
           weather = Weather.for_area(long, lat)
 
-          puts "Update weather observation for field #{field.id} #{weather[:city]},#{weather[:country]}"
+          puts "Update weather observation for field #{field.id} #{weather[:city]} #{long},#{lat}"
 
           weather_observation = WeatherObservation.new({
             temperature: weather[:temperature],

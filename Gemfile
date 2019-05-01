@@ -10,6 +10,7 @@ gem 'rack-cors'
 gem 'pg'
 gem 'config'
 gem "http"
+gem "whenever"
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'active_model_serializers'
