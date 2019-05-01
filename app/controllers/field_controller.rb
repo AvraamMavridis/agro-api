@@ -3,7 +3,7 @@ class FieldController < ApplicationController
 
   def index
     user_fields = Field.where(user_id: user_id)
-    render json: user_fields
+    render json: user_fields, each_serializer: FieldCollectionSerializer
   end
   
   def show

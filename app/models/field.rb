@@ -6,6 +6,7 @@ class Field < ApplicationRecord
   has_one :user
   has_one :plant_type
   has_many :weather_observations, dependent: :delete_all
+  has_many :operations, dependent: :delete_all
 
   private
 

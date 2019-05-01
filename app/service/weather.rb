@@ -21,7 +21,4 @@ class Weather
       humidity: observation["humidity"]
     }
   end
-
-  def self.temperature(lat, l)
-  end
 end
