@@ -3,7 +3,6 @@ class UserController < ApplicationController
 
 
   def index
-    binding.pry
     
   end
 

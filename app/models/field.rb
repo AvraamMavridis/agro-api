@@ -11,10 +11,10 @@ class Field < ApplicationRecord
   private
 
   def user_id_exists
-    return false if User.find_by_id(user_id).nil?
+    User.find_by_id(user_id).nil?
   end
 
   def plant_type_exists
-    return false if PlantType.find_by_id(plant_type_id).nil?
+    PlantType.find_by_id(plant_type_id).nil?
   end
 end
