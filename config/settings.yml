@@ -1,5 +1,5 @@
 weather:
- here_app_code: WYBqtP8ovipBp8u7lwnc8A
- here_app_id: jaUuFpgX004TpxrLhmhc 
- weather_url: https://weather.cit.api.here.com/weather/1.0/report.json?product=observation
+ here_app_code:
+ here_app_id:
+ weather_url:
 
